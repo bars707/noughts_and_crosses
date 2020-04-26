@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <ImageView
+        android:id="@+id/main_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/main_background3" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="@string/version"
+        android:background="@color/white50_game"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="360dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <Button
+            android:id="@+id/btn_startVsBot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/style_press"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="@string/btn_start_bot"
+            android:textColor="@color/black95"
+            android:textSize="28sp"
+            android:layout_marginBottom="30dp"
+            android:onClick="slotStartBot"/>
+
+        <Button
+            android:id="@+id/btn_startVsHuman"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/style_press"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="@string/btn_start_human"
+            android:textColor="@color/black95"
+            android:textSize="28sp"
+            android:layout_marginBottom="30dp"
+            android:onClick="slotStart"/>
+
+        <Button
+            android:id="@+id/btn_options"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/style_press"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="@string/btn_options"
+            android:textColor="@color/black95"
+            android:textSize="28sp"
+            android:onClick="slotOptions"
+            android:layout_marginBottom="30dp"/>
+
+        <Button
+            android:id="@+id/btn_exit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/style_press"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="@string/btn_exit"
+            android:textColor="@color/black95"
+            android:textSize="28sp"
+            android:onClick="slotExit"/>
+    </LinearLayout>
+
+</RelativeLayout>

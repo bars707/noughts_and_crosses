@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">Крестики нолики</string>
+    <string name="button_two">Button_two</string>
+    <string name="text_view">privet</string>
+    <string name="button_one">Настройки</string>
+    <string name="title_activity_settings">Настройки</string>
+    <string name="text_button_return">Назад</string>
+
+    <!-- Preference Titles -->
+    <string name="lvl_header">Настройки игры</string>
+    <string name="audio_header">Настройки звука</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="lvl_title">Уровень сложности</string>
+    <!-- Sync Preferences -->
+    <string name="music_title">Музыка</string>
+    <string name="sounds_title">Звуки</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+
+    <string name="btn_start_human">Играть вдвоём</string>
+    <string name="btn_start_bot">Играть с ботом</string>
+    <string name="btn_options">Настройки</string>
+    <string name="btn_exit">Выход</string>
+    <string name="btn_back">Назад</string>
+    <string name="btn_anew">Заново</string>
+    <string name="title_activity_settings2">Настройки</string>
+    <string name="game_step">Ходит:   </string>
+    <string name="game_nought">нолик</string>
+    <string name="game_cross">крестик</string>
+    <string name="str_volume">громкость</string>
+    <string name="music_volume">seekBarMusic</string>
+    <string name="sound_volume">seekBarSound</string>
+    <string name="version">v0.0.1</string>
+    <string name="final_text_fail">Никто не победил!</string>
+    <string name="final_text_win_cross">Победили КРЕСТИКИ!</string>
+    <string name="final_text_win_nought">Победили НОЛИКИ!</string>
+    <string name="cmd_use_bot">use_bot</string>
+    <string name="lvl_bot">lvlBot</string>
+
+</resources>
