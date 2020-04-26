@@ -201,6 +201,18 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        music_player.pause();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        music_player.start();
+    }
+
     public void slotBack(View view) {
         Intent intent = new Intent(GameActivity.this, MainActivity.class);
         startActivity(intent);

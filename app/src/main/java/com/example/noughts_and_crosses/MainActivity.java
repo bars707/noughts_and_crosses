@@ -41,6 +41,18 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        music_player.pause();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        music_player.start();
+    }
+
     public void slotStart(View view) {
         Intent intent = new Intent(MainActivity.this, GameActivity.class);
         intent.putExtra(getString(R.string.cmd_use_bot), false);
