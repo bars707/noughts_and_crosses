@@ -31,10 +31,12 @@
     <string name="game_step">Ходит:   </string>
     <string name="game_nought">нолик</string>
     <string name="game_cross">крестик</string>
+    <string name="name_bot">бот</string>
+    <string name="name_user">игрок</string>
     <string name="str_volume">громкость</string>
     <string name="music_volume">seekBarMusic</string>
     <string name="sound_volume">seekBarSound</string>
-    <string name="version">v0.0.1</string>
+    <string name="version">v0.1.0</string>
     <string name="final_text_fail">Никто не победил!</string>
     <string name="final_text_win_cross">Победили КРЕСТИКИ!</string>
     <string name="final_text_win_nought">Победили НОЛИКИ!</string>

@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/btn_back"
                 android:background="@drawable/style_press_game"
-                android:textSize="24dp"
+                android:textSize="24sp"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:textColor="@color/black95"
@@ -49,13 +49,12 @@
                 android:layout_height="wrap_content"
                 android:text="@string/btn_anew"
                 android:background="@drawable/style_press_game"
-                android:textSize="24dp"
+                android:textSize="24sp"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:textColor="@color/black95"
                 android:onClick="slotAnew"
                 android:layout_marginBottom="30dp"
-                android:layout_gravity="right"
                 android:layout_weight="1"
                 />
 

@@ -167,7 +167,7 @@ public class GameActivity extends AppCompatActivity {
                 }
                 botStep();
 
-                showResultGame(getBaseContext(), state_game);
+//                showResultGame(getBaseContext(), state_game);
             }
         };
 
@@ -431,11 +431,21 @@ public class GameActivity extends AppCompatActivity {
         String text_step;
 
         //установка текста подсказки кто ходит
-        if (current_move_figure == FIGURE_IMG_NOUGHT) {
-            textView_who_move.setText(getString(R.string.game_step) + " " + getString(R.string.game_nought));
-        } else {
-            textView_who_move.setText(getString(R.string.game_step) + " " + getString(R.string.game_cross));
+        if(use_bot) {
+            if (current_move_figure == bot.getFigure()) {
+                textView_who_move.setText(getString(R.string.game_step) + " " + getString(R.string.name_bot));
+            } else {
+                textView_who_move.setText(getString(R.string.game_step) + " " + getString(R.string.name_user));
+            }
+        } else
+        {
+            if (current_move_figure == FIGURE_IMG_NOUGHT) {
+                textView_who_move.setText(getString(R.string.game_step) + " " + getString(R.string.game_nought));
+            } else {
+                textView_who_move.setText(getString(R.string.game_step) + " " + getString(R.string.game_cross));
+            }
         }
+
 
     }
 
@@ -453,10 +463,6 @@ public class GameActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-//        Intent intent = new Intent(this, MainActivity.class);
-//        startActivity(intent);
-//        finish();
-
         slotBack(null);
     }
 
@@ -482,59 +488,9 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
-//    public void botStep()
-//    {
-//        //если ходит не бот или игра заблокирована
-//        if(current_move_figure != bot.getFigure() || lock_game)
-//            return;
-//
-//        Log.d(APP_LOG, "class GameActivity - бот начинает ходить");
-//
-//        if(botThread == null) {
-//            botThread = new Thread(new Runnable() {
-//                @Override
-//                public void run() {
-//                    Log.d(APP_LOG, "class GameActivity - поток запущен");
-//                    lock_game = true;
-//                    int[] pos_step = bot.getBotStep(step_number);
-//                    workMove(pos_step[0], pos_step[1], bot.getFigure(), map_view_images[pos_step[0]][pos_step[1]]);
-//                    if (state_game == RESULT_GAME_CONTINUE) {
-//                        lock_game = false;
-//                    }
-//
-//                    Log.d(APP_LOG, "class GameActivity - ход бота закончен");
-//                }
-//            });
-//
-//        }
-//        botThread.start();
-//
-////        showResultGame(this, state_game);
-//    }
-
-      public void botStep()
+    public void botStep()
     {
         new AsyncThinkBot().execute();
-    }
-
-    //вывод результата ишры
-    void showResultGame(Context context, int status)
-    {
-        //просмотр результата
-        switch (status) {
-            case RESULT_GAME_CONTINUE:
-//                    Toast.makeText(context,"Дальше", Toast.LENGTH_SHORT).show();
-                break;
-            case RESULT_GAME_FAIL:
-                Toast.makeText(context, R.string.final_text_fail, Toast.LENGTH_LONG).show();
-                break;
-            case RESULT_GAME_WIN_CROSS:
-                Toast.makeText(context, R.string.final_text_win_cross, Toast.LENGTH_LONG).show();
-                break;
-            case RESULT_GAME_WIN_NOUGHT:
-                Toast.makeText(context, R.string.final_text_win_nought, Toast.LENGTH_LONG).show();
-                break;
-        }
     }
 
     class AsyncThinkBot extends AsyncTask<Void, Void, int[]> {
@@ -561,10 +517,6 @@ public class GameActivity extends AppCompatActivity {
                 lock_game = false;
             }
             Log.d(APP_LOG, "class GameActivity - ход бота закончен");
-
-            Log.d(APP_LOG, "class AsyncTask - onPostExecute | начало");
-            //showResultGame(getBaseContext(), state_game);
-            Log.d(APP_LOG, "class AsyncTask - onPostExecute | конец");
         }
     }
 

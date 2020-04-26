@@ -7,12 +7,17 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import static android.view.WindowManager.*;
+import static android.view.WindowManager.LayoutParams.*;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -29,6 +34,10 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_activity);
+
+        //скрыть строку состояния телефона
+        Window w = getWindow();
+        w.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         music_seek = findViewById(R.id.music_seek);
         sound_seek = findViewById(R.id.sounds_seek);
