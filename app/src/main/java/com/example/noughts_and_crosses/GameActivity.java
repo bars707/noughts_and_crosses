@@ -165,7 +165,9 @@ public class GameActivity extends AppCompatActivity {
                     default: {
                     }
                 }
-                botStep();
+                if(use_bot) {
+                    botStep();
+                }
             }
         };
 
