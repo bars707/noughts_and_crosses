@@ -408,18 +408,9 @@ public class GameActivity extends AppCompatActivity {
 
     private void setWhoMove(int who_last_move) {
         if (who_last_move == 0) {
-//            //определение кто ходит первым
-//            Random random = new Random();
-//            int start_figure = random.nextInt(2);
-//
-//            //первым ходит
-//            if(start_figure == 0) {
-//                current_move_figure = FIGURE_IMG_NOUGHT;    //нолик
-//            }
-//            else {
             current_move_figure = FIGURE_IMG_CROSS;     //крестик
-//            }
-        } else {
+        }
+        else {
             //замена ходящего
             if (current_move_figure == FIGURE_IMG_NOUGHT) {
                 current_move_figure = FIGURE_IMG_CROSS;
