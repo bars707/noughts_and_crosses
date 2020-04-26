@@ -166,8 +166,6 @@ public class GameActivity extends AppCompatActivity {
                     }
                 }
                 botStep();
-
-//                showResultGame(getBaseContext(), state_game);
             }
         };
 
