@@ -2,7 +2,7 @@
     <!-- Reply Preference -->
     <string-array name="lvl_entries">
         <item>Лёгкий</item>
-<!--        <item>Средний</item>-->
+        <item>Средний</item>
 <!--        <item>Сложный</item>-->
     </string-array>
 </resources>

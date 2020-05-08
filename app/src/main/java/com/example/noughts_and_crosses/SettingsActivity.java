@@ -146,6 +146,11 @@ public class SettingsActivity extends AppCompatActivity {
         buf_str = getString(R.string.sound_volume);
         buf_str = loadParams(buf_str);
         sound_seek.setProgress(Integer.parseInt(buf_str));
+
+        //чтение уровня сложности
+        buf_str = getString(R.string.lvl_bot);
+        buf_str = loadParams(buf_str);
+        spinner.setSelection(Integer.parseInt(buf_str));
     }
 
     private void saveParams(String key, String value) {

@@ -192,7 +192,7 @@ public class GameActivity extends AppCompatActivity {
             if (!buf_str.isEmpty()) {
                 switch (Integer.parseInt(buf_str)) {
                     case 0: bot = new BotLow(); break;
-
+                    case 1: bot = new BotMedium(); break;
                 }
                 initBot(bot);
                 Log.d(APP_LOG, "class GameActivity - create bot");
