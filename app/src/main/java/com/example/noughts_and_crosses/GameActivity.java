@@ -8,7 +8,6 @@ import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -73,7 +72,6 @@ public class GameActivity extends AppCompatActivity {
 
     public boolean use_bot = false; //используется ли бот в этой сессии
     Bot bot;                        //бот
-    Thread botThread = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -181,10 +179,10 @@ public class GameActivity extends AppCompatActivity {
         imageView_c1_r2.setOnClickListener(clickListener);
         imageView_c2_r2.setOnClickListener(clickListener);
 
-        initForm();
-
         Intent intent = getIntent();
         use_bot = intent.getBooleanExtra(getString(R.string.cmd_use_bot), false);
+
+        initForm();
 
         if (use_bot) {
             buf_str = getString(R.string.lvl_bot);
@@ -199,6 +197,7 @@ public class GameActivity extends AppCompatActivity {
 
             }
         }
+        setWhoMove(0);  //определение кто ходит первым
     }
 
     @Override
@@ -397,8 +396,6 @@ public class GameActivity extends AppCompatActivity {
         map_view_images[1][2] = imageView_c1_r2;
         map_view_images[2][2] = imageView_c2_r2;
 
-        setWhoMove(0);  //определение кто ходит первым
-
         step_number = 0;
 
         lock_game = false;
@@ -412,10 +409,12 @@ public class GameActivity extends AppCompatActivity {
 
     public void slotAnew(View view) {
         play_gong.start();
+
         initForm();
         if (use_bot) {
             initBot(bot);
         }
+        setWhoMove(0);  //определение кто ходит первым
     }
 
     private void setWhoMove(int who_last_move) {
@@ -431,25 +430,27 @@ public class GameActivity extends AppCompatActivity {
             }
         }
 
-        String text_step;
+        StringBuilder text_step = new StringBuilder();
 
         //установка текста подсказки кто ходит
-        if(use_bot) {
-            if (current_move_figure == bot.getFigure()) {
-                textView_who_move.setText(getString(R.string.game_step) + " " + getString(R.string.name_bot));
-            } else {
-                textView_who_move.setText(getString(R.string.game_step) + " " + getString(R.string.name_user));
-            }
-        } else
-        {
-            if (current_move_figure == FIGURE_IMG_NOUGHT) {
-                textView_who_move.setText(getString(R.string.game_step) + " " + getString(R.string.game_nought));
-            } else {
-                textView_who_move.setText(getString(R.string.game_step) + " " + getString(R.string.game_cross));
-            }
+        if (current_move_figure == FIGURE_IMG_NOUGHT) {
+            text_step.append(getString(R.string.game_nought));
+        } else {
+            text_step.append(getString(R.string.game_cross));
         }
 
-
+        if(use_bot) {
+            text_step.insert(0," [");
+            if (current_move_figure == bot.getFigure()) {
+                text_step.insert(0, getString(R.string.name_bot));
+            }
+            else {
+                text_step.insert(0, getString(R.string.name_user));
+            }
+            text_step.append("]");
+        }
+        text_step.insert(0, getString(R.string.game_step) + " ");
+        textView_who_move.setText(text_step);
     }
 
     public String loadParams(String key, String default_val) {
@@ -482,11 +483,13 @@ public class GameActivity extends AppCompatActivity {
         //если == 1 ходит первым бот
         if (Who_step_first.nextInt(2) == 1) {
             bot.setMyFigure(FIGURE_IMG_CROSS);  //бот крестик
+            bot.setEnemyFigure(FIGURE_IMG_NOUGHT);
             Log.d(APP_LOG, "class GameActivity - бот ходит первым");
             botStep();
 
         } else {
             bot.setMyFigure(FIGURE_IMG_NOUGHT);  //бот нолик
+            bot.setEnemyFigure(FIGURE_IMG_CROSS);
             Log.d(APP_LOG, "class GameActivity - человек ходит первым");
         }
     }
@@ -500,8 +503,10 @@ public class GameActivity extends AppCompatActivity {
         @Override
         protected int[] doInBackground(Void... voids) {
             //если ходит не бот или игра заблокирована
-            if(current_move_figure != bot.getFigure() || lock_game)
+            if(current_move_figure != bot.getFigure() || lock_game) {
+                Log.d(APP_LOG, "class GameActivity - lock_game: true");
                 return null;
+            }
             return bot.getBotStep(step_number);
         }
 

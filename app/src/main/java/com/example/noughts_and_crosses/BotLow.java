@@ -9,6 +9,7 @@ public class BotLow implements Bot {
     final private String APP_LOG = "app_log";
 
     private int my_figure;
+    private int enemy_figure;
     private int figure_cross;
     private int figure_nought;
     private int figure_none;
@@ -20,6 +21,7 @@ public class BotLow implements Bot {
     @Override
     public void reset() {
         my_figure = 0;
+        enemy_figure = 0;
         figure_cross = 0;
         figure_nought = 0;
         figure_none = 0;
@@ -48,6 +50,9 @@ public class BotLow implements Bot {
     public void setMyFigure(int id_figure) {
         my_figure = id_figure;
     }
+
+    @Override
+    public void setEnemyFigure(int id_figure) { enemy_figure = id_figure; }
 
     @Override
     public void setMap(int[][] map, int num_cols, int num_rows) {

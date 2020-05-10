@@ -9,6 +9,7 @@ public interface Bot{
     void setNought(int id_figure);                         //передача id нолика
     void setNone(int id_figure);                           //передача id нолика
     void setMyFigure(int id_figure);                       //установка фигуры бота
+    void setEnemyFigure(int id_figure);                    //установка фигуры противника
     void setMap(int[][] map, int num_cols, int num_rows);  //передача карты игры
 
     //передача параметров во время игры
